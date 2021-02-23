@@ -1,6 +1,46 @@
-actions: []
+actions:
+- name: GetAlertmanagerConfig
+  definition:
+    kind: synchronous
+    handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
+    headers:
+    - name: Hasura-Secret
+      value_from_env: ACTION_CONFIG_API_SECRET
+  permissions:
+  - role: user_admin
+- name: SetAlertmanagerConfig
+  definition:
+    kind: synchronous
+    handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
+    headers:
+    - name: Hasura-Secret
+      value_from_env: ACTION_CONFIG_API_SECRET
+  permissions:
+  - role: user_admin
+- name: ValidateCredential
+  definition:
+    kind: synchronous
+    handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
+    headers:
+    - name: Hasura-Secret
+      value_from_env: ACTION_CONFIG_API_SECRET
+  permissions:
+  - role: user_admin
+- name: ValidateExporter
+  definition:
+    kind: synchronous
+    handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
+    headers:
+    - name: Hasura-Secret
+      value_from_env: ACTION_CONFIG_API_SECRET
+  permissions:
+  - role: user_admin
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: GetAlertmanagerConfigOutput
+  - name: SetAlertmanagerConfigOutput
+  - name: ValidateCredentialOutput
+  - name: ValidateExporterOutput
   scalars: []

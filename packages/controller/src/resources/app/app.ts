@@ -415,6 +415,19 @@ export function OpstraceApplicationResources(
                     {
                       name: "HASURA_GRAPHQL_ENABLED_LOG_TYPES",
                       value: "startup, http-log, websocket-log"
+                    },
+                    {
+                      name: "ACTION_CONFIG_API_ENDPOINT",
+                      value: `http://config.${namespace}.svc.cluster.local:8081`,
+                    },
+                    {
+                      name: "ACTION_CONFIG_API_SECRET",
+                      valueFrom: {
+                        secretKeyRef: {
+                          name: "hasura-action-secret",
+                          key: "HASURA_CONFIG_API_SECRET"
+                        }
+                      }
                     }
                   ],
                   ports: [

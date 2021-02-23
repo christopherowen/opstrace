@@ -1,2 +1,57 @@
+type Mutation {
+  GetAlertmanagerConfig (
+    tenant: String!
+  ): GetAlertmanagerConfigOutput
+}
 
+
+type Mutation {
+  SetAlertmanagerConfig (
+    tenant: String!
+    config: String!
+  ): SetAlertmanagerConfigOutput
+}
+
+
+type Mutation {
+  ValidateCredential (
+    tenant: String!
+    name: String!
+    type: String!
+    value: json!
+  ): ValidateCredentialOutput
+}
+
+
+type Mutation {
+  ValidateExporter (
+    tenant: String!
+    name: String!
+    type: String!
+    credential: String
+    config: json!
+  ): ValidateExporterOutput
+}
+
+
+
+
+type GetAlertmanagerConfigOutput {
+  tenant : String!
+  config : String!
+}
+
+type SetAlertmanagerConfigOutput {
+  tenant : String!
+}
+
+type ValidateCredentialOutput {
+  tenant : String!
+  name : String!
+}
+
+type ValidateExporterOutput {
+  tenant : String!
+  name : String!
+}
 

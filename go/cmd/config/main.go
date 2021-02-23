@@ -47,6 +47,8 @@ func main() {
 	flag.StringVar(&loglevel, "loglevel", "info", "error|info|debug")
 	var listenAddress string
 	flag.StringVar(&listenAddress, "listen", "", "")
+	var actionAddress string
+	flag.StringVar(&actionAddress, "action", "", "")
 
 	flag.BoolVar(&disableAPIAuthentication, "disable-api-authn", false, "")
 
@@ -62,6 +64,7 @@ func main() {
 		log.Fatalf("missing required --listen")
 	}
 	log.Infof("listen address: %s", listenAddress)
+	log.Infof("action hook address: %s", actionAddress)
 
 	cortexDefault := "http://localhost"
 	rulerURL := envEndpointURL("CORTEX_RULER_ENDPOINT", &cortexDefault)
@@ -145,6 +148,11 @@ func main() {
 	exporters := router.PathPrefix("/api/v1/exporters").Subrouter()
 	setupConfigAPI(exporters, listExporters, writeExporters, getExporter, deleteExporter)
 
+	if actionAddress != "" {
+		// TODO set up and launch action listener (with its own router) in other thread
+		// TODO listener should have validators for credentials/exporters
+		// TODO listener should have setter/getter for alertmanager config that route to cortex GET,POST /api/v1/alerts: https://cortexmetrics.io/docs/api/#get-alertmanager-configuration
+	}
 	log.Fatalf("terminated: %v", http.ListenAndServe(listenAddress, router))
 }
 
