@@ -4,7 +4,7 @@ actions:
     kind: synchronous
     handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
     headers:
-    - name: Hasura-Secret
+    - name: X-Action-Secret
       value_from_env: ACTION_CONFIG_API_SECRET
   permissions:
   - role: user_admin
@@ -13,7 +13,7 @@ actions:
     kind: synchronous
     handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
     headers:
-    - name: Hasura-Secret
+    - name: X-Action-Secret
       value_from_env: ACTION_CONFIG_API_SECRET
   permissions:
   - role: user_admin
@@ -22,7 +22,7 @@ actions:
     kind: synchronous
     handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
     headers:
-    - name: Hasura-Secret
+    - name: X-Action-Secret
       value_from_env: ACTION_CONFIG_API_SECRET
   permissions:
   - role: user_admin
@@ -31,7 +31,7 @@ actions:
     kind: synchronous
     handler: '{{ACTION_CONFIG_API_ENDPOINT}}'
     headers:
-    - name: Hasura-Secret
+    - name: X-Action-Secret
       value_from_env: ACTION_CONFIG_API_SECRET
   permissions:
   - role: user_admin

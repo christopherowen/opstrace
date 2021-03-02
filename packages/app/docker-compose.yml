@@ -51,18 +51,18 @@ services:
       ACTION_CONFIG_API_ENDPOINT: http://localhost:8082
       ACTION_CONFIG_API_SECRET: someactionsecret
   # Config service for Hasura Actions that call into it
-  config:
-    image: opstrace/config-api:TODO
-    command:
-      - -listen=:8081
-      - -action=:8082
-      - -disable-api-authn
-    ports:
-      - 8081:8081
-    environment:
-      GRAPHQL_ENDPOINT: http://localhost:8080
-      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecret
-      HASURA_ACTION_SECRET: someactionsecret
+  #config:
+  #  image: opstrace/config-api:TODO
+  #  command:
+  #    - -listen=:8081
+  #    - -action=:8082
+  #    - -disable-api-authn
+  #  ports:
+  #    - 8081:8081
+  #  environment:
+  #    GRAPHQL_ENDPOINT: http://localhost:8080
+  #    HASURA_GRAPHQL_ADMIN_SECRET: myadminsecret
+  #    HASURA_ACTION_SECRET: someactionsecret
   # S3 service for storing modules
   s3:
     image: minio/minio

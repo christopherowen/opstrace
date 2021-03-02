@@ -46,7 +46,7 @@ export function OpstraceAPIResources(
     httpGet: {
       path: "/metrics",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      port: 8080 as any,
+      port: "action" as any,
       scheme: "HTTP"
     },
     timeoutSeconds: 1,
@@ -221,7 +221,7 @@ export function OpstraceAPIResources(
             {
               interval: "30s",
               path: "/metrics",
-              port: "http"
+              port: "action"
             }
           ],
           jobLabel: "job",
